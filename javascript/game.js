@@ -1,7 +1,7 @@
 var canvas = document.createElement("canvas");
 var ctx = canvas.getContext("2d");
-canvas.width = 512;
-canvas.height = 480;
+canvas.width = 600;
+canvas.height = 375;
 document.body.appendChild(canvas);
 
 var bgReady = false;
@@ -38,7 +38,7 @@ var enemy = {
     y: 0
 };
 
-var enemiesCaught = 0;
+var monstersCaught = 0;
 
 var keysDown = {};
 
@@ -55,7 +55,7 @@ var reset = function () {
     player.y = canvas.height / 2;
 
     enemy.x = 32 + (Math.random() * (canvas.width - 64));
-    enemy.y = 32 + (Math.random() * (canvas.width - 64));
+    enemy.y = 32 + (Math.random() * (canvas.height - 64));
 };
 
 var update = function (modifier) {
@@ -88,10 +88,10 @@ var render = function () {
         ctx.drawImage(bgImage, 0,0);
     }
     if (playerReady) {
-        ctxdrawImage(playerIcon, player.x, player.y);
+        ctx.drawImage(playerIcon, player.x, player.y);
     }
     if (enemyReady) {
-        ctx.drawImage(enemyImage, enemy.x, enemy.y);
+        ctx.drawImage(enemyIcon, enemy.x, enemy.y);
     }
 
     /*score*/
